@@ -74,30 +74,39 @@ function BookForm({ book, onSaved, onCancelEdit }) {
       <h2>
         {isEditing ? "Edit Book" : "Add Book"}
       </h2>
-      <label>
-        Title
-        <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
-      </label>
 
-      <label>
-        Author
-        <input type="text" value={author} onChange={event => setAuthor(event.target.value)} />
+      <div className="form-field">
+        <label>
+          Title
+          <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
+        </label>
+      </div>
 
-      </label>
+      <div className="form-field">
+        <label>
+          Author
+          <input type="text" value={author} onChange={event => setAuthor(event.target.value)} />
+        </label>
+      </div>
 
-      <label>
-        Price
-        <input type="number" value={price} onChange={event => setPrice(event.target.value)} />
+      <div className="form-field">
+        <label>
+          Price
+          <input type="number" value={price} onChange={event => setPrice(event.target.value)} />
+        </label>
+      </div>
 
-      </label>
+      <div className="form-actions">
 
-      <button>{isEditing ? "Update Book" : "Add Book"}</button>
-      {isEditing && (
-        <button type="button"
-          onClick={handleCancel}>
-          Cancel Edit
-        </button>
-      )}
+        <button type="submit" className="button button-primary">{isEditing ? "Update Book" : "Add Book"}</button>
+        {isEditing && (
+          <button type="button"
+            className="button button-secondary"
+            onClick={handleCancel}>
+            Cancel Edit
+          </button>
+        )}
+      </div>
     </form>
   );
 }

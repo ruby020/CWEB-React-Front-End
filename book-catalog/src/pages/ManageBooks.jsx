@@ -33,40 +33,55 @@ function ManageBooks() {
   return (
     <main>
       <h1>Manage Books</h1>
-      <BookForm
-        book={editingBook}
-        onSaved={loadBooks}
-        onCancelEdit={() => setEditingBook(null)} />
 
-      <h2>Current Books</h2>
+      <p className="page-description">
+        Add new books or update your existing catalog.
+      </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <section class="panel">
+        <BookForm
+          book={editingBook}
+          onSaved={loadBooks}
+          onCancelEdit={() => setEditingBook(null)} />
+      </section>
+
+      <section class="panel">
+        <h2>Current Books</h2>
+
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
 
-        <tbody>
-          {books.map((book) => (
-            <tr key={book.id}>
-              <td>{book.id}</td>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.price}</td>
-              <td>
-                <button onClick={() => setEditingBook(book)}>Edit</button>
-                <button onClick={() => deleteBook(book.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <tbody>
+              {books.map((book) => (
+                <tr key={book.id}>
+                  <td>{book.id}</td>
+                  <td>{book.title}</td>
+                  <td>{book.author}</td>
+                  <td>{book.price}</td>
+                  <td>
+                    <button
+                      className="button button-primary"
+                      onClick={() => setEditingBook(book)}>Edit</button>
+                    <button
+                      className="button button-danger"
+                      onClick={() => deleteBook(book.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
     </main>
   );
