@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BookForm from "../components/BookForm";
+import { Pencil, Trash2 } from "lucide-react";
 
 function ManageBooks() {
 
@@ -71,10 +72,16 @@ function ManageBooks() {
                   <td>
                     <button
                       className="button button-primary"
-                      onClick={() => setEditingBook(book)}>Edit</button>
+                      onClick={() => setEditingBook(book)}>
+                      <Pencil size={16} />
+                      Edit
+                    </button>
                     <button
                       className="button button-danger"
-                      onClick={() => deleteBook(book.id)}>Delete</button>
+                      onClick={() => deleteBook(book.id)}>
+                      <Trash2 size={16} />
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

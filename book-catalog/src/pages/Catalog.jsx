@@ -27,14 +27,31 @@ function Catalog() {
     return <div>Error: {error}</div>
   }
 
+  function handleAddToCart(book) {
+    // Placeholder 
+    console.log("Add to cart: ", book.id);
+  }
 
   return (
     <main>
-      <h1>Book Catalog</h1>
+      <div className="catalog-header">
+        <h1>Find Your Next Favorite</h1>
+        <p>Explore our catalog</p>
+      </div>
 
-      {books.map((book) => (
-        <BookCard key={book.id} book={book} />
-      ))}
+      {loading && <p>Loading books...</p>}
+      {error && <p role="alert">Could not load the catalog: {error}</p>}
+      {!loading && !error && books.length === 0 && (
+        <p>No books are available yet.</p>
+      )}
+
+      {!loading && !error && books.length > 0 && (
+        <div className="book-grid">
+          {books.map((book) => (
+            <BookCard key={book.id} book={book} onAddToCart={handleAddToCart} />
+          ))}
+        </div>
+      )}
     </main>
 
   );
